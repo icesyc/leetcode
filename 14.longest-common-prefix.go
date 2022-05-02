@@ -5,6 +5,25 @@
  */
 
 // @lc code=start
+/**
+ * 解法2
+ */
+func longestCommonPrefix(strs []string) string {
+	sort.Strings(strs)
+	first, last, i := strs[0], strs[len(strs)-1], 0
+	for i = 0; i < len(first); i++ {
+		if first[i] != last[i] {
+			break
+		}
+	}
+	return first[0:i]
+}
+
+//*/
+
+/**
+ * 解法1
+ *
 func longestCommonPrefix(strs []string) string {
 	res := ""
 	for i := 0; i < len(strs[0]); i++ {
@@ -17,6 +36,7 @@ func longestCommonPrefix(strs []string) string {
 	}
 	return res
 }
+//*/
 
 // @lc code=end
 

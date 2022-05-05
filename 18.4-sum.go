@@ -43,6 +43,7 @@ func kSum(nums []int, target int, k int) [][]int {
 			if target < nums[i]*k || target > nums[len(nums)-1]*k {
 				break
 			}
+			//跳过重复元素
 			if i > 0 && nums[i] == nums[i-1] {
 				continue
 			}

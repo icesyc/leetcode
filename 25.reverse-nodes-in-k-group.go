@@ -16,20 +16,27 @@
  * 解法2
  */
 func reverseKGroup(head *ListNode, k int) *ListNode {
-	n := 0
-	for cur := head; cur != nil, cur = cur.Next {
-		n++
-	}
-	prev := nil
-	for i := 0; i < n / k; i++ {
-		for j := 0; j < k; j++ {
-			tmp := head.Next
-			head.Next = prev
-			prev = head
-			head = tmp
+	left, right := head, head
+	dummy := &ListNode{}
+	jump := dummy
+	for {
+		i := 0
+		for i = 0; i < k && right != nil; i++ {
+			right = right.Next
 		}
+		if i < k {
+			return dummy.Next
+		}
+		prev, cur := right, left
+		for i := 0; i < k; i++ {
+			tmp := cur.Next
+			cur.Next = prev
+			prev = cur
+			cur = tmp
+		}
+		jump.Next, jump, left = prev, left, right
+
 	}
-	return prev
 }
 
 //*/

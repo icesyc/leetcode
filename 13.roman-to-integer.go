@@ -12,15 +12,15 @@ func romanToInt(s string) int {
 		"X": 10, "V": 5, "I": 1,
 	}
 	res, i := 0, 0
-	for i = 0; i < len(s)-1; i++ {
+	for i = 0; i < len(s); i++ {
 		n := symMap[s[i:i+1]]
-		if n < symMap[s[i+1:i+2]] {
+		if i+2 <= len(s) && n < symMap[s[i+1:i+2]] {
 			res -= n
 		} else {
 			res += n
 		}
 	}
-	return res + symMap[s[i:]]
+	return res
 }
 
 // @lc code=end

@@ -6,8 +6,11 @@
 
 // @lc code=start
 func divide(dividend int, divisor int) int {
+	if dividend == -1<<31 && divisor == -1 {
+		return (1 << 31) - 1
+	}
 	positive := true
-	if dividend < 0 == divisor < 0 {
+	if dividend < 0 {
 		dividend = -dividend
 		positive = !positive
 	}
@@ -15,27 +18,21 @@ func divide(dividend int, divisor int) int {
 		divisor = -divisor
 		positive = !positive
 	}
-	temp := divisor
-	added := 1
-	for dividend >= divisor {
-		dividend -= temp
-		n += added
-		temp = temp << 1
-		added = added << 1
-	}
-	dividend += temp
-	temp = temp >> 1
-	for dividend >= divisor {
-		temp = temp >> 1
 
+	res := 0
+	for dividend >= divisor {
+		temp, m := divisor, 1
+		for temp<<1 <= dividend {
+			temp = temp << 1
+			m = m << 1
+		}
+		dividend -= temp
+		res += m
 	}
-	if !positive {
-		n = -n
+	if positive {
+		return res
 	}
-	if n > (1<<31)-1 {
-		return (1 << 31) - 1
-	}
-	return n
+	return -res
 }
 
 // @lc code=end

@@ -5,6 +5,49 @@
  */
 
 // @lc code=start
+/**
+ * kmp
+ */
+func strStr(haystack string, needle string) int {
+	next := buildNext(needle)
+	i, j := 0, 0
+	for i < len(haystack) {
+		if haystack[i] == needle[j] {
+			i++
+			j++
+		} else if j > 0 {
+			j = next[j-1]
+		} else {
+			i++
+		}
+		if j == len(needle) {
+			return i - j
+		}
+	}
+	return -1
+}
+
+func buildNext(pattern string) []int {
+	pl := len(pattern)
+	next := make([]int, pl)
+	i, j := 1, 0
+	for i < pl {
+		if pattern[i] == pattern[j] {
+			next[i] = j + 1
+			i++
+			j++
+		} else if j > 0 {
+			j = next[j-1]
+		} else {
+			next[i] = 0
+			i++
+		}
+	}
+	return next
+}
+
+//*/
+/*
 func strStr(haystack string, needle string) int {
 	n1, n2 := len(haystack), len(needle)
 	for i := 0; ; i++ {
@@ -21,7 +64,7 @@ func strStr(haystack string, needle string) int {
 		}
 	}
 }
-
+*/
 /*
 func strStr(haystack string, needle string) int {
 	i, j, n1, n2 := 0, 0, len(haystack), len(needle)

@@ -14,6 +14,7 @@
  * 从emptyCells[0]开始，遍历该cell所有可能的数字，在bitmap中测试是否有效
  * 如果有效，设置该位置对应的bitmap, 调用solve(emptyCells, i+1)递归求后续的解
  * 如果无效, 清除该位置对应的bitmap, 循环该cell下一个数字
+ * solve结束后，根据emptyCell保存的有效数字填充board
  */
 // @lc code=start
 type EmptyCell struct {

@@ -26,7 +26,6 @@ func fullJustify(words []string, maxWidth int) []string {
 
 //对words[i:j]进行排版
 func justify(words []string, totalSpaces, i, j int) string {
-	//j-i为words[i:j]之间隔断数
 	var spaceBetween, extraSpaces int
 	//最后一行或一行只有一个word要左对齐
 	if j-i == 1 || j == len(words) {

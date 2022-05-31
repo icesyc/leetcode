@@ -58,6 +58,14 @@ func copyTree(root *TreeNode, offset int) *TreeNode {
 
 /**
  * 递归
+ * 对于数字n可生成的所有树，我们可以遍历1..n
+ * 将每个数字做为顶点，其它数字做为子树，这样生成的所有路径即为答案
+ * G(1,n) = F(1,n) + F(2,n) ... + F(n,n)
+ * 其中F(1,n)为以1作为根结点的所有树的路径
+ * 以F(3,7)为例，我们以3作为root, 那么左树的可能节点为[1,2],
+ * 右树的可能结点为[4,5,6,7]
+ * 那么可知 leftTree = G(1,2) rightTree = G(4,7)
+ * 通过递归即可求解
  */
 /*
 func generateTrees(n int) []*TreeNode {

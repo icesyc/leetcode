@@ -35,8 +35,8 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 			cur = tmp
 		}
 		jump.Next, jump, left = prev, left, right
-
 	}
+	return dummy.Next
 }
 
 //*/

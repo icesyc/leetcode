@@ -20,7 +20,7 @@
  * 如果是分割多行的话，那么spaceCost([j:])就变成了分割words[j:n-1]所需要消耗的最小空格数
  * 可以看到，这是dp[i]的一个子问题，所以我们重新归纳一下：
  * dp[i] = min(spaceCost([i:j]) + dp[j]),  i = [0:n], j = [i+1:n]
- * 由于dp[i]依赖于后续的dp计算结果，我们构建dp数组时需要使用top-down方式，即
+ * 由于dp[i]依赖于后续的dp计算结果，我们构建dp数组时需要先计算dp[n-1]
  * 计算顺序为dp[n-1].... dp[0]
  */
 package main
